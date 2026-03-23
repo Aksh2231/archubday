@@ -400,7 +400,7 @@ export function SubmissionForm() {
                   Upload your {responseType}
                 </label>
                 <p className="mt-2 text-sm text-cocoa/60">
-                  Maximum file size: {formatFileSize(MAX_MEDIA_SIZE_BYTES)}.
+                  Maximum file size: {formatFileSize(MAX_MEDIA_SIZE_BYTES)}. Around 30-40 seconds is ideal.
                 </p>
                 <input
                   id="upload"
@@ -415,7 +415,7 @@ export function SubmissionForm() {
               <div className="rounded-[1.5rem] bg-white/85 p-5">
                 <p className="text-sm text-cocoa/70">
                   Record right here in the browser, then preview it before sending. Keep recordings under{" "}
-                  {formatFileSize(MAX_MEDIA_SIZE_BYTES)}.
+                  {formatFileSize(MAX_MEDIA_SIZE_BYTES)} and aim for about 30-40 seconds.
                 </p>
 
                 {responseType === "video" ? (

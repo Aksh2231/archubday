@@ -20,7 +20,8 @@ export default function SubmitPage() {
               <li>You can send multiple memories in any format, even back to back.</li>
               <li>Use your real name so text submissions can work in the guessing game.</li>
               <li>Audio and video can be uploaded or recorded directly before sending.</li>
-              <li>Keep videos short so they load quickly on the dashboard.</li>
+              <li>Keep audio and video files under 50 MB.</li>
+              <li>Try to keep recordings around 30-40 seconds so they upload and play smoothly.</li>
             </ul>
           </div>
         </section>
