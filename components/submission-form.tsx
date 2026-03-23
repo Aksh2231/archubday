@@ -8,8 +8,13 @@ const ACCEPT_BY_TYPE: Record<Exclude<ResponseType, "text">, string> = {
   audio: "audio/*",
   video: "video/*",
 };
+const MAX_MEDIA_SIZE_BYTES = 50 * 1024 * 1024;
 
 type CaptureMode = "upload" | "record";
+
+function formatFileSize(bytes: number) {
+  return `${(bytes / (1024 * 1024)).toFixed(0)} MB`;
+}
 
 export function SubmissionForm() {
   const [name, setName] = useState("");
@@ -80,7 +85,16 @@ export function SubmissionForm() {
   }
 
   function handleFileChange(event: ChangeEvent<HTMLInputElement>) {
-    setFile(event.target.files?.[0] ?? null);
+    const nextFile = event.target.files?.[0] ?? null;
+
+    if (nextFile && nextFile.size > MAX_MEDIA_SIZE_BYTES) {
+      setFile(null);
+      setError(`Please keep ${responseType} files under ${formatFileSize(MAX_MEDIA_SIZE_BYTES)}.`);
+      return;
+    }
+
+    setError("");
+    setFile(nextFile);
   }
 
   function handleCaptureModeChange(nextMode: CaptureMode) {
@@ -135,6 +149,17 @@ export function SubmissionForm() {
         const nextBlob = new Blob(recordedChunksRef.current, {
           type: recorder.mimeType || (responseType === "audio" ? "audio/webm" : "video/webm"),
         });
+
+        if (nextBlob.size > MAX_MEDIA_SIZE_BYTES) {
+          clearRecordedPreview();
+          setRecordedBlob(null);
+          setRecordedUrl("");
+          setError(`That recording is too large. Please keep it under ${formatFileSize(MAX_MEDIA_SIZE_BYTES)}.`);
+          mediaStreamRef.current?.getTracks().forEach((track) => track.stop());
+          mediaStreamRef.current = null;
+          setIsRecording(false);
+          return;
+        }
 
         clearRecordedPreview();
         setRecordedBlob(nextBlob);
@@ -217,6 +242,10 @@ export function SubmissionForm() {
 
         if (isRecording) {
           throw new Error("Please stop the recording before submitting.");
+        }
+
+        if (mediaSource.size > MAX_MEDIA_SIZE_BYTES) {
+          throw new Error(`Please keep ${responseType} files under ${formatFileSize(MAX_MEDIA_SIZE_BYTES)}.`);
         }
 
         content = await uploadFile(mediaSource, responseType);
@@ -370,6 +399,9 @@ export function SubmissionForm() {
                 <label className="text-sm font-medium text-cocoa" htmlFor="upload">
                   Upload your {responseType}
                 </label>
+                <p className="mt-2 text-sm text-cocoa/60">
+                  Maximum file size: {formatFileSize(MAX_MEDIA_SIZE_BYTES)}.
+                </p>
                 <input
                   id="upload"
                   type="file"
@@ -382,7 +414,8 @@ export function SubmissionForm() {
             ) : (
               <div className="rounded-[1.5rem] bg-white/85 p-5">
                 <p className="text-sm text-cocoa/70">
-                  Record right here in the browser, then preview it before sending.
+                  Record right here in the browser, then preview it before sending. Keep recordings under{" "}
+                  {formatFileSize(MAX_MEDIA_SIZE_BYTES)}.
                 </p>
 
                 {responseType === "video" ? (
