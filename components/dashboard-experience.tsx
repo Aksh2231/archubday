@@ -1,5 +1,6 @@
 "use client";
 
+import confetti from "canvas-confetti";
 import { useMemo, useState } from "react";
 import { type MemoryResponse } from "@/lib/supabase";
 
@@ -39,6 +40,57 @@ function isGuessable(response: MemoryResponse) {
   return response.type === "text";
 }
 
+function playRevealChime() {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  const AudioContextClass = window.AudioContext ?? (window as typeof window & {
+    webkitAudioContext?: typeof AudioContext;
+  }).webkitAudioContext;
+
+  if (!AudioContextClass) {
+    return;
+  }
+
+  const audioContext = new AudioContextClass();
+  const now = audioContext.currentTime;
+  const notes = [523.25, 659.25, 783.99];
+
+  notes.forEach((frequency, index) => {
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+    const startTime = now + index * 0.1;
+    const endTime = startTime + 0.22;
+
+    oscillator.type = "triangle";
+    oscillator.frequency.setValueAtTime(frequency, startTime);
+
+    gainNode.gain.setValueAtTime(0.0001, startTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.08, startTime + 0.02);
+    gainNode.gain.exponentialRampToValueAtTime(0.0001, endTime);
+
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    oscillator.start(startTime);
+    oscillator.stop(endTime);
+  });
+
+  window.setTimeout(() => {
+    void audioContext.close();
+  }, 600);
+}
+
+function launchRevealConfetti() {
+  void confetti({
+    particleCount: 120,
+    spread: 78,
+    startVelocity: 34,
+    origin: { y: 0.62 },
+    colors: ["#ff7e9d", "#ffd7ba", "#fff3cf", "#dff7ea", "#c4b0ff"],
+  });
+}
+
 export function DashboardExperience({ responses }: { responses: MemoryResponse[] }) {
   const groupedResponses = useMemo(() => {
     return responses.reduce<Record<string, MemoryResponse[]>>((accumulator, response) => {
@@ -74,6 +126,9 @@ export function DashboardExperience({ responses }: { responses: MemoryResponse[]
         isCorrect,
       },
     }));
+
+    launchRevealConfetti();
+    playRevealChime();
   }
 
   return (

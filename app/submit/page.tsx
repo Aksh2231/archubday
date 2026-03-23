@@ -12,13 +12,14 @@ export default function SubmitPage() {
           <p className="text-base leading-7 text-cocoa/75">
             Pick a prompt, choose a format, and send something heartfelt. You can submit more than
             once, so feel free to leave a text memory, then come back with an audio note or a video too.
+            You can upload media files or record audio and video directly in the browser.
           </p>
           <div className="rounded-[1.75rem] bg-gradient-to-br from-cream to-blush p-6">
             <p className="font-medium text-cocoa">A few helpful notes</p>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-cocoa/75">
               <li>You can send multiple memories in any format, even back to back.</li>
               <li>Use your real name so text submissions can work in the guessing game.</li>
-              <li>Audio and video files upload into the public Supabase bucket.</li>
+              <li>Audio and video can be uploaded or recorded directly before sending.</li>
               <li>Keep videos short so they load quickly on the dashboard.</li>
             </ul>
           </div>

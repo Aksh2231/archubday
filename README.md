@@ -50,6 +50,6 @@ Typical setup:
 
 ## Pages
 
-- `/submit` for friends to leave one or more text, audio, or video memories
+- `/submit` for friends to leave one or more text, audio, or video memories, either by upload or direct recording
 - `/login` for password entry
 - `/dashboard` for the text guessing-game and audio/video reveal experience
