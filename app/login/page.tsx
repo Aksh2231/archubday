@@ -14,18 +14,17 @@ export default async function LoginPage({
         <section className="space-y-5">
           <p className="text-sm uppercase tracking-[0.3em] text-rose/80">Private entry</p>
           <h1 className="font-display text-4xl text-cocoa md:text-5xl">
-            Archana&apos;s guessing game starts here.
+            Hi Archu, we love you❤️
           </h1>
           <p className="max-w-lg text-base leading-7 text-cocoa/75">
-            Enter the birthday password to unlock the memory wall and see each message grouped by
-            prompt. Every card starts anonymous until the guess is made.
+            These are all the things that we adore about you and our most favoirte memories of you.
           </p>
           <div className="story-ring relative hidden rounded-[1.75rem] bg-gradient-to-br from-blush via-cream to-peach p-8 md:block">
-            <p className="text-sm uppercase tracking-[0.2em] text-cocoa/55">Inside the dashboard</p>
+            <p className="text-sm uppercase tracking-[0.2em] text-cocoa/55">How to Unlock</p>
             <ul className="mt-4 space-y-3 text-cocoa/80">
-              <li>Anonymous messages grouped by prompt</li>
-              <li>Text, audio, and video memories in one place</li>
-              <li>Guess, reveal, and celebrate each sender</li>
+              <li>The password is hidden in one of your gifts.</li>
+              <li>Anonymous messages grouped by prompt.</li>
+              <li>Try and guess who sent it to you.</li>
             </ul>
           </div>
         </section>
