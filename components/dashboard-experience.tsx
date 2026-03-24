@@ -160,9 +160,10 @@ export function DashboardExperience({ responses }: { responses: MemoryResponse[]
           </div>
 
           <div className="relative mx-auto w-full max-w-[360px]">
-            <div className="absolute inset-6 rounded-[2rem] bg-gradient-to-br from-rose/20 via-white/20 to-peach/30 blur-3xl" />
-            <div className="relative flex min-h-[290px] items-end justify-center overflow-hidden rounded-[2rem] border border-white/80 bg-gradient-to-b from-white/90 via-cream/85 to-blush/75 p-6">
-              <div className="absolute inset-x-6 top-6 h-16 rounded-full bg-white/55 blur-2xl" />
+            <div className="absolute inset-6 rounded-[2rem] bg-gradient-to-br from-cocoa/25 via-rose/15 to-peach/20 blur-3xl" />
+            <div className="relative flex min-h-[290px] items-end justify-center overflow-hidden rounded-[2rem] border border-white/20 bg-gradient-to-b from-[#5f4a61] via-[#7a5d73] to-[#f3a0ac] p-6 shadow-[0_24px_60px_rgba(93,67,88,0.24)]">
+              <div className="absolute inset-x-6 top-6 h-16 rounded-full bg-white/15 blur-2xl" />
+              <div className="absolute inset-x-10 bottom-4 h-24 rounded-full bg-[#ffd7ba]/18 blur-3xl" />
               <Image
                 src="/archu-dashboard.png"
                 alt="Archu on the birthday dashboard"
