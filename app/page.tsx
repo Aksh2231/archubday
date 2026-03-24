@@ -9,7 +9,7 @@ export default function HomePage() {
           <div>
             <p className="mb-4 text-sm uppercase tracking-[0.3em] text-rose/80">Birthday Memory App</p>
             <h1 className="max-w-4xl font-display text-5xl leading-tight text-cocoa md:text-7xl">
-              Archu&apos;s Birthday Wall: A little corner for your favorite things &amp; memories
+              Archu&apos;s Birthday Wall: A little corner for our favorite things &amp; memories
               about Archana.
             </h1>
             <p className="mt-6 max-w-2xl balance-text text-lg leading-8 text-cocoa/80">

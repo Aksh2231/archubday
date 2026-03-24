@@ -17,7 +17,7 @@ export default async function LoginPage({
             Hi Archu, we love you❤️
           </h1>
           <p className="max-w-lg text-base leading-7 text-cocoa/75">
-            These are all the things that we adore about you and our most favoirte memories of you.
+            These are all the things that we adore about you and our most favorite memories of you.
           </p>
           <div className="story-ring relative hidden rounded-[1.75rem] bg-gradient-to-br from-blush via-cream to-peach p-8 md:block">
             <p className="text-sm uppercase tracking-[0.2em] text-cocoa/55">How to Unlock</p>
