@@ -46,3 +46,39 @@ body {
 .balance-text {
   text-wrap: balance;
 }
+
+.collage-photo {
+  animation: collageFloat 8s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.collage-photo-delay-1 {
+  animation-delay: -1.5s;
+}
+
+.collage-photo-delay-2 {
+  animation-delay: -3.2s;
+}
+
+.collage-photo-delay-3 {
+  animation-delay: -4.6s;
+}
+
+@keyframes collageFloat {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(var(--photo-rotate, 0deg));
+  }
+  50% {
+    transform: translateY(-8px) rotate(calc(var(--photo-rotate, 0deg) + 1.2deg));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .collage-photo,
+  .collage-photo-delay-1,
+  .collage-photo-delay-2,
+  .collage-photo-delay-3 {
+    animation: none;
+  }
+}

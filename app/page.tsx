@@ -35,7 +35,10 @@ export default function HomePage() {
           <div className="relative mx-auto w-full max-w-[480px]">
             <div className="absolute inset-8 rounded-[2rem] bg-gradient-to-br from-rose/15 via-white/20 to-mint/25 blur-3xl" />
             <div className="relative grid min-h-[420px] grid-cols-2 gap-4 rounded-[2rem] border border-white/80 bg-gradient-to-br from-white/85 via-blush/45 to-cream/80 p-5 shadow-card">
-              <div className="rounded-[1.75rem] bg-gradient-to-br from-peach/90 to-white p-4 shadow-sm">
+              <div
+                className="collage-photo rounded-[1.75rem] bg-gradient-to-br from-peach/90 to-white p-4 shadow-sm"
+                style={{ ["--photo-rotate" as string]: "-5deg" }}
+              >
                 <div className="relative h-full min-h-[180px] overflow-hidden rounded-[1.35rem] border border-white/70 bg-white/80">
                   <Image
                     src="/archu-collage-1.jpg"
@@ -44,13 +47,13 @@ export default function HomePage() {
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 240px"
                   />
-                  <div className="absolute inset-x-4 bottom-4 rounded-[1rem] bg-white/72 px-3 py-2 text-xs uppercase tracking-[0.2em] text-cocoa/55 backdrop-blur-md">
-                    Sunshine Archu
-                  </div>
                 </div>
               </div>
 
-              <div className="mt-10 rounded-[1.75rem] bg-gradient-to-br from-white to-mint/70 p-4 shadow-sm">
+              <div
+                className="collage-photo collage-photo-delay-1 mt-10 rounded-[1.75rem] bg-gradient-to-br from-white to-mint/70 p-4 shadow-sm"
+                style={{ ["--photo-rotate" as string]: "4deg" }}
+              >
                 <div className="relative h-full min-h-[140px] overflow-hidden rounded-[1.35rem] border border-white/70 bg-white/80">
                   <Image
                     src="/archu-collage-2.jpg"
@@ -59,13 +62,13 @@ export default function HomePage() {
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 220px"
                   />
-                  <div className="absolute inset-x-4 bottom-4 rounded-[1rem] bg-white/72 px-3 py-2 text-xs uppercase tracking-[0.2em] text-cocoa/55 backdrop-blur-md">
-                    Cozy Archu
-                  </div>
                 </div>
               </div>
 
-              <div className="-mt-6 rounded-[1.75rem] bg-gradient-to-br from-white to-blush/75 p-4 shadow-sm">
+              <div
+                className="collage-photo collage-photo-delay-2 -mt-6 rounded-[1.75rem] bg-gradient-to-br from-white to-blush/75 p-4 shadow-sm"
+                style={{ ["--photo-rotate" as string]: "-3deg" }}
+              >
                 <div className="relative h-full min-h-[135px] overflow-hidden rounded-[1.35rem] border border-white/70 bg-white/80">
                   <Image
                     src="/archu-collage-3.jpg"
@@ -74,20 +77,21 @@ export default function HomePage() {
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 220px"
                   />
-                  <div className="absolute inset-x-4 bottom-4 rounded-[1rem] bg-white/72 px-3 py-2 text-xs uppercase tracking-[0.2em] text-cocoa/55 backdrop-blur-md">
-                    Candid Archu
-                  </div>
                 </div>
               </div>
 
-              <div className="rounded-[1.75rem] bg-gradient-to-br from-cream to-white p-4 shadow-sm">
-                <div className="relative flex h-full min-h-[185px] items-end overflow-hidden rounded-[1.35rem] border border-dashed border-cocoa/15 bg-white/80 p-5">
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.24em] text-cocoa/45">More Photos Soon</p>
-                    <p className="mt-3 text-sm leading-6 text-cocoa/60">
-                      This tile is ready for the next Archu memory once you send more photos.
-                    </p>
-                  </div>
+              <div
+                className="collage-photo collage-photo-delay-3 rounded-[1.75rem] bg-gradient-to-br from-cream to-white p-4 shadow-sm"
+                style={{ ["--photo-rotate" as string]: "3deg" }}
+              >
+                <div className="relative h-full min-h-[185px] overflow-hidden rounded-[1.35rem] border border-white/70 bg-white/80">
+                  <Image
+                    src="/archu-collage-4.jpg"
+                    alt="Archu in a white top with sunglasses on her head"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 220px"
+                  />
                 </div>
               </div>
             </div>
