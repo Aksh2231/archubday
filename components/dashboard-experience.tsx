@@ -1,6 +1,7 @@
 "use client";
 
 import confetti from "canvas-confetti";
+import Image from "next/image";
 import { useMemo, useState } from "react";
 import { type MemoryResponse } from "@/lib/supabase";
 
@@ -134,25 +135,44 @@ export function DashboardExperience({ responses }: { responses: MemoryResponse[]
   return (
     <div className="space-y-8">
       <section className="rounded-[2rem] border border-white/70 bg-white/70 p-8 shadow-card backdrop-blur-xl">
-        <p className="text-sm uppercase tracking-[0.3em] text-rose/80">Birthday dashboard</p>
-        <h1 className="mt-4 max-w-3xl font-display text-4xl leading-tight text-cocoa md:text-6xl">
-          A whole room full of voices, memories, and tiny pieces of love for Archana.
-        </h1>
-        <p className="mt-4 max-w-2xl text-base leading-7 text-cocoa/75">
-          Text memories stay anonymous for the guessing game. Audio and video memories show their
-          sender right away, so Archana can just enjoy hearing and seeing them.
-        </p>
-        <div className="mt-8 flex flex-wrap items-center gap-4">
-          <button
-            type="button"
-            onClick={() => setStarted(true)}
-            className="rounded-full bg-cocoa px-6 py-3 font-medium text-white transition hover:bg-cocoa/90"
-          >
-            {started ? "Keep going" : "Start opening memories"}
-          </button>
-          <p className="text-sm text-cocoa/60">
-            {responses.length} memories collected across {Object.keys(groupedResponses).length} prompts
-          </p>
+        <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(260px,0.8fr)]">
+          <div>
+            <p className="text-sm uppercase tracking-[0.3em] text-rose/80">Birthday dashboard</p>
+            <h1 className="mt-4 max-w-4xl font-display text-4xl leading-tight text-cocoa md:text-6xl">
+              A whole room full of voices, memories, and tiny pieces of love for Archana.
+            </h1>
+            <p className="mt-4 max-w-2xl text-base leading-7 text-cocoa/75">
+              Text memories stay anonymous for the guessing game. Audio and video memories show their
+              sender right away, so Archana can just enjoy hearing and seeing them.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <button
+                type="button"
+                onClick={() => setStarted(true)}
+                className="rounded-full bg-cocoa px-6 py-3 font-medium text-white transition hover:bg-cocoa/90"
+              >
+                {started ? "Keep going" : "Start opening memories"}
+              </button>
+              <p className="text-sm text-cocoa/60">
+                {responses.length} memories collected across {Object.keys(groupedResponses).length} prompts
+              </p>
+            </div>
+          </div>
+
+          <div className="relative mx-auto w-full max-w-[360px]">
+            <div className="absolute inset-6 rounded-[2rem] bg-gradient-to-br from-rose/20 via-white/20 to-peach/30 blur-3xl" />
+            <div className="relative flex min-h-[290px] items-end justify-center overflow-hidden rounded-[2rem] border border-white/80 bg-gradient-to-b from-white/90 via-cream/85 to-blush/75 p-6">
+              <div className="absolute inset-x-6 top-6 h-16 rounded-full bg-white/55 blur-2xl" />
+              <Image
+                src="/archu-dashboard.png"
+                alt="Archu on the birthday dashboard"
+                width={540}
+                height={540}
+                className="relative z-10 h-auto max-h-[340px] w-auto object-contain drop-shadow-[0_24px_44px_rgba(93,67,88,0.2)]"
+                priority
+              />
+            </div>
+          </div>
         </div>
       </section>
 
